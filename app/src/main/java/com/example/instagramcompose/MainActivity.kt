@@ -20,8 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             InstagramComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    LoginScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

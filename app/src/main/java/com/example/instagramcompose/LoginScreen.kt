@@ -1,5 +1,6 @@
 package com.example.instagramcompose
 
+import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -99,9 +101,15 @@ fun Body(modifier: Modifier) {
     ) {
         ImageLogo(Modifier.align(Alignment.CenterHorizontally))
         Spacer(Modifier.size(16.dp))
-        Email(email) { email = it }
+        Email(email) {
+            email = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(Modifier.size(4.dp))
-        Password(password) { password = it }
+        Password(password) {
+            password = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(Modifier.size(8.dp))
         ForgotPasswordButton(Modifier.align(Alignment.End))
         Spacer(Modifier.size(16.dp))
@@ -168,6 +176,13 @@ fun Email(
 
         )
     )
+}
+
+fun enableLogin(email: String, password: String): Boolean {
+    val validEmail = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    val validPass = password.length > 6
+    return validEmail && validPass
+
 }
 
 @Composable
@@ -242,7 +257,13 @@ fun LoginButton(isLoginEnabled: Boolean) {
         },
         enabled = isLoginEnabled,
         modifier = Modifier
-            .fillMaxWidth()
+            .fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF4EA8E9),
+            disabledContainerColor = Color(0xFF78C8F9),
+            contentColor = Color.White,
+            disabledContentColor = Color.White
+        )
     ) {
         Text(text = "Log In")
     }

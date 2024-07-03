@@ -11,6 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.instagramcompose.login.ui.LoginScreen
+import com.example.instagramcompose.login.ui.LoginViewModel
 import com.example.instagramcompose.ui.theme.InstagramComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +23,8 @@ class MainActivity : ComponentActivity() {
             InstagramComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     LoginScreen(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        loginViewModel = LoginViewModel()
                     )
                 }
             }

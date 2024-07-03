@@ -1,8 +1,10 @@
 package com.example.instagramcompose.login.data.network
 
-class LoginRepository {
+import javax.inject.Inject
 
-    private val api = LoginService()
+class LoginRepository @Inject constructor(
+    private val api: LoginService
+) {
 
     suspend fun doLogin(user: String, password: String): Boolean {
         return api.doLogin(user, password)

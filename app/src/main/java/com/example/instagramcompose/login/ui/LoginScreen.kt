@@ -46,13 +46,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instagramcompose.R
+import com.example.instagramcompose.login.data.network.LoginRepository
+import com.example.instagramcompose.login.data.network.LoginService
+import com.example.instagramcompose.login.domain.LoginUseCase
+import retrofit2.Retrofit
 
 @Preview(
     showBackground = true
 )
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen(Modifier, LoginViewModel())
+
 }
 
 @Composable
